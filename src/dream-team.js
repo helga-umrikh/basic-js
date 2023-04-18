@@ -17,17 +17,17 @@ function createDreamTeam(members) {
   let arr = members;
   let result = [];
   if(Array.isArray(arr) !== true) {return false};
-  arr = arr.flat();
   for(let i = 0; i != arr.length; i++) {
     if(typeof arr[i] === "string") {
       let word = arr[i];
+      if(word.includes('.')) {continue};
       word = word.replace(/[,\s/_/]+/g, '' )
-      result.push(word[0]);
+      result.push(word[0].toUpperCase());
     }
   }
+  result = result.flat();
   result = result.sort();
   result = result.join('');
-  result = result.toUpperCase();
   return result;
 }
 
